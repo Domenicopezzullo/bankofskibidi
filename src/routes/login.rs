@@ -3,5 +3,28 @@ use dioxus::prelude::*;
 
 #[component]
 pub fn Login() -> Element {
-    rsx! {}
+    let mut username = use_signal(|| String::new());
+    let mut password = use_signal(|| String::new());
+    let mut error_message = use_signal(|| String::new());
+
+    rsx! {
+        div { id: "register-container",
+            p { id: "register-title", "Register" }
+            label { id: "register-username-label", r#for: "register-username", "Username" }
+            input { onchange: move |e: Event<FormData>| {
+                username.set(e.value().clone())
+            }, name: "Username", placeholder: "ThatItalianDude", type: "text", id: "register-username" }
+            label { id: "register-password-label", r#for: "register-password", "Password" }
+            input { onchange: move |e: Event<FormData>| {
+                password.set(e.value().clone())
+            }, name: "Username", placeholder: "Skibidi@12", type: "password", id: "register-password" }
+            button { onclick: move |_| {
+                if username().is_empty() || password().is_empty() {
+                    error_message.set("Username and Password are required".to_string());
+                    return;
+                }
+            }, id: "register-register-btn", "Login" }
+            h1 { style: "color: red; font-family: Verdana;", "{error_message}" }
+        }
+    }
 }
