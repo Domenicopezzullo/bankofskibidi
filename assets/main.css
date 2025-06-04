@@ -1,0 +1,73 @@
+#home-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background-color: #181818;
+}
+
+#home-title {
+  text-align: center;
+  font-family: Verdana;
+  font-size: 40px;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 30px;
+}
+
+#home-div {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+#home-login, #home-register {
+  font-size: 30px;
+  font-family: Verdana;
+  border-radius: 10px;
+  padding: 15px 25px;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+  border: 2px solid #333;
+  transition: all 0.3s ease;
+}
+
+#home-register:hover, #home-login:hover {
+  background-color: #333;
+  border-color: #555;
+  transform: translateY(-2px);
+}
+
+#register-container {
+  background-color: #181818;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#register-username, #register-password {
+  margin: 25px;
+  height: 25px;
+  font-family: Verdana;
+}
+
+#register-title {
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  font-family: Verdana;
+}
+
+#register-username-label, #register-password-label {
+  color: white;
+  font-size: 15px;
+  font-family: Verdana;
+}
+
