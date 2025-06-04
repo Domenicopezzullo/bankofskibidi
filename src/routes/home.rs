@@ -7,7 +7,7 @@ pub fn Home() -> Element {
 
     rsx! {
         div { id: "home-container",
-            p { id: "home-title", "Bank of America (real)" }
+            p { id: "home-title", "Bank of Skibidi" }
             div { id: "home-div",
                 button {
                     id: "home-login",

@@ -7,6 +7,8 @@ use crate::utils::{database::add_user, utilities::calculate_hash};
 pub fn Register() -> Element {
     let mut username = use_signal(|| String::new());
     let mut password = use_signal(|| String::new());
+    let mut error_message = use_signal(|| String::new());
+
     rsx! {
         div { id: "register-container",
             p { id: "register-title", "Register" }
@@ -19,10 +21,15 @@ pub fn Register() -> Element {
                 password.set(e.value().clone())
             }, name: "Username", placeholder: "Skibidi@12", type: "password", id: "register-password" }
             button { onclick: move |_| {
+                if username().is_empty() || password().is_empty() {
+                    error_message.set("Username and Password are required".to_string());
+                    return;  
+                }
                 let hashed_pass = calculate_hash(password().as_str()); 
                 add_user(username().as_str(), &hashed_pass);
                 
             }, id: "register-register-btn", "Register" }
+            h1 { style: "color: red; font-family: Verdana;", "{error_message}" }
         }
     }
 }
